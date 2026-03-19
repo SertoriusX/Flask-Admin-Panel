@@ -17,33 +17,48 @@ A powerful and modern admin panel for Flask with auto-discovering models and ful
 
 ## Quick Start
 
+### 1. Clone the repository
 ```bash
-# Clone the repository
 git clone https://github.com/SertoriusX/Flask-Admin-Panel.git
 cd Flask-Admin-Panel
+```
 
-# Create virtual environment
+### 2. Create virtual environment
+```bash
 python -m venv venv
+```
 
-# Activate virtual environment
+### 3. Activate virtual environment
+```bash
 # On Linux/Mac:
 source venv/bin/activate
+
 # On Windows:
 venv\Scripts\activate
+```
 
-# Install dependencies
+### 4. Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
-# Initialize project
+### 5. Initialize project
+```bash
 python manage.py init-project
+```
 
-# Create database
+### 6. Create database
+```bash
 python manage.py reset-db
+```
 
-# Create admin user
+### 7. Create admin user
+```bash
 python manage.py createadmin
+```
 
-# Run server
+### 8. Run server
+```bash
 python manage.py run
 ```
 
