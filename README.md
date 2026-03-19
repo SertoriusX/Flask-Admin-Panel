@@ -42,12 +42,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 5. Initialize project
-```bash
-python manage.py init-project
-```
-
-### 6. Create database
+### 5. Create database
 ```bash
 python manage.py reset-db
 ```
@@ -74,6 +69,7 @@ Visit: http://127.0.0.1:5000/admin/
 | `python manage.py routes` | List all routes |
 | `python manage.py create-app <name>` | Create new module |
 | `python manage.py delete-app <name>` | Delete a module |
+| `python manage.py init-project` | Reset app folder |
 
 ## Creating a New Module
 
@@ -124,11 +120,6 @@ Flask-Admin-Panel/
 │   │   ├── repository.py
 │   │   ├── service.py
 │   │   └── routes.py
-│   ├── product/             # Example module
-│   │   ├── model.py
-│   │   ├── repository.py
-│   │   ├── service.py
-│   │   └── routes.py
 │   └── templates/admin/     # Admin templates
 ├── manage.py                # CLI commands
 ├── requirements.txt
@@ -141,13 +132,6 @@ Flask-Admin-Panel/
 - `POST /api/register` - Register user
 - `POST /api/login` - Login (returns JWT)
 - `GET /api/me` - Get current user
-
-### Products (Example)
-- `GET /api/products` - List all
-- `GET /api/products/<id>` - Get one
-- `POST /api/products` - Create (JWT required)
-- `PUT /api/products/<id>` - Update (JWT required)
-- `DELETE /api/products/<id>` - Delete (JWT required)
 
 ## Admin Panel Preview
 
