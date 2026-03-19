@@ -109,7 +109,8 @@ class Category(db.Model):
 python manage.py reset-db
 ```
 
-The module automatically appears in the admin panel!
+### 6. Restart server
+The module automatically appears in the admin panel! No extra setup needed.
 
 ## Project Structure
 
