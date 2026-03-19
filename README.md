@@ -104,6 +104,11 @@ class Category(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 ```
 
+### 5. Update database
+```bash
+python manage.py reset-db
+```
+
 The module automatically appears in the admin panel!
 
 ## Project Structure
