@@ -4,7 +4,7 @@
 ![Flask](https://img.shields.io/badge/Flask-2.0+-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-A modern, Django-like admin panel for Flask with auto-discovering models and CRUD operations. Built with simplicity and elegance in mind.
+A powerful and modern admin panel for Flask with auto-discovering models and full CRUD operations. Built with simplicity and elegance in mind.
 
 ## Features
 
