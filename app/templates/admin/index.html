@@ -1,0 +1,47 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="page-header" style="text-align: center;">
+    <h1>Dashboard</h1>
+    <p>Welcome to Flask Admin Panel</p>
+</div>
+
+<div style="display: flex; justify-content: center;">
+    <div style="width: 100%; max-width: 1000px;">
+        <div class="stats-grid">
+            {% for model_name in models %}
+            <div class="stat-card">
+                <div class="stat-icon primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <div class="stat-content">
+                    <h3>{{ model_name|title }}</h3>
+                    <p><a href="/admin/{{ model_name }}/">Manage {{ model_name }}s</a></p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Quick Actions</span>
+            </div>
+            <div class="card-body">
+                <div class="model-grid">
+                    {% for model_name in models %}
+                    <div class="model-card">
+                        <div class="model-card-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            <h3>{{ model_name|title }}s</h3>
+                        </div>
+                        <div class="model-card-body">
+                            <a href="/admin/{{ model_name }}/add/">+ Add New {{ model_name|title }}</a>
+                            <a href="/admin/{{ model_name }}/">View All {{ model_name|title }}s</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

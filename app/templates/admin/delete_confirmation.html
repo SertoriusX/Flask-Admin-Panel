@@ -1,0 +1,30 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="breadcrumbs" style="justify-content: center;">
+    <a href="/admin/">Home</a>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    <a href="/admin/{{ model_name }}/">{{ model_name_display }}s</a>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    <span>Delete</span>
+</div>
+
+<div class="page-header" style="text-align: center;">
+    <h1>Delete {{ model_name_display }}</h1>
+</div>
+
+<div class="card" style="max-width: 500px; margin: 0 auto;">
+    <div class="card-body">
+        <div class="alert alert-danger" style="text-align: center;">
+            <strong>Warning!</strong> Are you sure you want to delete "{{ item[fields[1]] if fields|length > 1 else item.id }}"?
+        </div>
+        <p style="margin-bottom: 20px; color: var(--text-light); text-align: center;">This action cannot be undone.</p>
+        
+        <form method="POST">
+            <div style="display: flex; gap: 12px; justify-content: center;">
+                <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                <a href="/admin/{{ model_name }}/" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

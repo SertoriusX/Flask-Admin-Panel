@@ -1,0 +1,59 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div style="display: flex; justify-content: center;">
+    <div style="width: 100%; max-width: 1200px;">
+        <div class="breadcrumbs" style="justify-content: center;">
+            <a href="/admin/">Home</a>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            <span>{{ model_name_display }}s</span>
+        </div>
+
+        <div class="page-header" style="text-align: center;">
+            <h1>{{ model_name_display }}s</h1>
+            <p>Manage your {{ model_name_display.lower() }}s</p>
+        </div>
+
+        <div class="actions-row">
+            <div></div>
+            <a href="/admin/{{ model_name }}/add/" class="btn btn-primary">+ Add {{ model_name_display }}</a>
+        </div>
+
+        <div class="card">
+            <div class="card-body" style="padding: 0;">
+                {% if items %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            {% for field in fields %}
+                            <th>{{ field|title }}</th>
+                            {% endfor %}
+                            <th style="width: 180px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                        <tr>
+                            {% for field in fields %}
+                            <td>{{ item[field] if item[field] is not none else '' }}</td>
+                            {% endfor %}
+                            <td>
+                                <a href="/admin/{{ model_name }}/{{ item.id }}/" class="btn btn-secondary btn-sm">Edit</a>
+                                <a href="/admin/{{ model_name }}/{{ item.id }}/delete/" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <div class="empty-state">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <h3>No {{ model_name_display }}s yet</h3>
+                    <p>Get started by adding your first {{ model_name_display.lower() }}.</p>
+                    <a href="/admin/{{ model_name }}/add/" class="btn btn-primary" style="margin-top: 16px;">+ Add {{ model_name_display }}</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

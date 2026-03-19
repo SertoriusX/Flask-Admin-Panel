@@ -1,0 +1,39 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="breadcrumbs" style="justify-content: center;">
+    <a href="/admin/">Home</a>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    <a href="/admin/{{ model_name }}/">{{ model_name_display }}s</a>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    <span>{{ action }}</span>
+</div>
+
+<div class="page-header" style="text-align: center;">
+    <h1>{{ action }} {{ model_name_display }}</h1>
+</div>
+
+<div class="card" style="max-width: 600px; margin: 0 auto;">
+    <div class="card-body">
+        <form method="POST">
+            {% for field in fields %}
+            <div class="form-group">
+                <label for="id_{{ field }}">{{ field|title }}</label>
+                {% if field_types.get(field) == 'Boolean' %}
+                <div class="form-check">
+                    <input type="checkbox" name="{{ field }}" id="id_{{ field }}"{% if item and item[field] %} checked{% endif %}>
+                    <label for="id_{{ field }}">Yes / No</label>
+                </div>
+                {% else %}
+                <input type="text" name="{{ field }}" id="id_{{ field }}" class="form-control" value="{{ item[field] if item else '' }}">
+                {% endif %}
+            </div>
+            {% endfor %}
+            
+            <div style="display: flex; gap: 12px; margin-top: 24px; justify-content: center;">
+                <button type="submit" class="btn btn-primary">{{ action }} {{ model_name_display }}</button>
+                <a href="/admin/{{ model_name }}/" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
