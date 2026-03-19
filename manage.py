@@ -10,15 +10,13 @@ def main():
         print("Usage: python manage.py <command>")
         print("\n📦 Available Commands:")
         print("  run                      - Run development server")
-        print("  makemigrations           - Create database migrations")
-        print("  migrate                  - Apply database migrations")
-        print("  show-migrations          - Show all migrations")
-        print("  reset-db                 - Drop and recreate all tables")
-        print("  create-app <name>        - Create new module")
-        print("  delete-app <name>        - Delete a module (e.g., product)")
+        print("  reset-db                 - Drop ALL tables and recreate (LOSES DATA!)")
+        print("  create-db                - Create new tables only (SAFE - keeps existing data)")
         print("  createadmin              - Create an admin user")
         print("  routes                   - List all registered routes")
-        print("  init-project             - Reset app folder (keeps database)")
+        print("  create-app <name>        - Create new module")
+        print("  delete-app <name>        - Delete a module")
+        print("  init-project             - Reset app folder")
         return
     
     command = sys.argv[1]
@@ -67,7 +65,13 @@ def main():
         with app.app_context():
             db.drop_all()
             db.create_all()
-            print("✅ Database reset complete!")
+            print("✅ Database reset complete! (ALL DATA LOST)")
+    
+    elif command == 'create-db':
+        from app import app, db
+        with app.app_context():
+            db.create_all()
+            print("✅ New tables created! (Existing data preserved)")
     
     elif command == 'createadmin':
         from app import app

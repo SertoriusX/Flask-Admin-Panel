@@ -47,12 +47,12 @@ pip install -r requirements.txt
 python manage.py reset-db
 ```
 
-### 7. Create admin user
+### 6. Create admin user
 ```bash
 python manage.py createadmin
 ```
 
-### 8. Run server
+### 7. Run server
 ```bash
 python manage.py run
 ```
@@ -64,7 +64,8 @@ Visit: http://127.0.0.1:5000/admin/
 | Command | Description |
 |---------|-------------|
 | `python manage.py run` | Run development server |
-| `python manage.py reset-db` | Reset database |
+| `python manage.py reset-db` | Reset database (LOSES DATA!) |
+| `python manage.py create-db` | Create new tables (SAFE - keeps data) |
 | `python manage.py createadmin` | Create admin user |
 | `python manage.py routes` | List all routes |
 | `python manage.py create-app <name>` | Create new module |
@@ -104,9 +105,9 @@ class Category(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 ```
 
-### 5. Update database
+### 5. Create new tables
 ```bash
-python manage.py reset-db
+python manage.py create-db
 ```
 
 ### 6. Restart server
